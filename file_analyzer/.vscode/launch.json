@@ -1,0 +1,38 @@
+{
+    // Configuration de débogage pour Rust (utilise CodeLLDB)
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Debug file_analyzer (LLDB)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/target/debug/file_analyzer",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "terminal": "integrated",
+            "env": {
+                "RUST_BACKTRACE": "1"
+            },
+            // construit automatiquement avant de lancer
+            "preLaunchTask": "cargo build",
+            "stopOnEntry": false,
+            "sourceLanguages": ["rust"]
+        },
+        {
+            "name": "Debug tests (build then set binary)",
+            "type": "lldb",
+            "request": "launch",
+            "// NOTE: remplacez <hash> par le suffixe exact du binaire de test généré dans target/debug/deps/": "",
+            "program": "${workspaceFolder}/target/debug/deps/file_analyzer-<hash>",
+            "args": ["--nocapture"],
+            "cwd": "${workspaceFolder}",
+            "terminal": "integrated",
+            "env": {
+                "RUST_BACKTRACE": "1"
+            },
+            "preLaunchTask": "cargo test --no-run",
+            "sourceLanguages": ["rust"]
+        }
+    ]
+}
