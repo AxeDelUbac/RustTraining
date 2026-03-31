@@ -1,0 +1,12 @@
+[package]
+name = "nucleo-g0"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+embassy-stm32 = { git = "https://github.com/embassy-rs/embassy", features = ["stm32g0b1re", "unstable-pac", "memory-x", "time-driver-any"] }
+embassy-executor = { git = "https://github.com/embassy-rs/embassy", features = ["platform-cortex-m", "executor-thread"] }
+embassy-time = { git = "https://github.com/embassy-rs/embassy" }
+cortex-m = { version = "0.7", features = ["critical-section-single-core"] }
+cortex-m-rt = "0.7"
+panic-halt = "0.2"
